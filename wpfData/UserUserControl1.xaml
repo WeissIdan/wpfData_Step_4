@@ -20,13 +20,26 @@
                     <GridViewColumn Header="Phone number" Width="120" DisplayMemberBinding="{Binding Phone}" />
                     <GridViewColumn Header="City" Width="120" DisplayMemberBinding="{Binding City.CityName}" />
                     <GridViewColumn Header="UserName" Width="120" DisplayMemberBinding="{Binding UserName}" />
-                    <GridViewColumn Header="Password" Width="120" DisplayMemberBinding="{Binding Password}" />
                     <GridViewColumn Header="isAdmin" Width="120" DisplayMemberBinding="{Binding IsAdmin}" />
-                    
-                    
+                    <GridViewColumn Header="Snacks" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ItemsControl ItemsSource="{Binding Snacks}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding SnackName}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
+
+
+
         <DockPanel Grid.Column="1" Background="AliceBlue" x:Name="cityInfo"/>
     </Grid>
 </UserControl>

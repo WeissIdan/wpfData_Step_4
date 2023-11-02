@@ -58,12 +58,14 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Snack.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="UserUserControl1.xaml.cs">
       <DependentUpon>UserUserControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseDB.cs" />
     <Compile Include="ViewModel\CityDB.cs" />
+    <Compile Include="ViewModel\SnackDB.cs" />
     <Compile Include="ViewModel\UserDB.cs" />
     <Page Include="CityUserControl.xaml">
       <SubType>Designer</SubType>

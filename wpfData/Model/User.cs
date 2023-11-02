@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wpfData.Model;
 
 namespace wpfData_Step_4.Model
 {
@@ -16,6 +17,7 @@ namespace wpfData_Step_4.Model
         private string password;
         private bool isAdmin;
 
+        private SnackList snacks;
         public bool IsAdmin
         {
             get { return isAdmin; }
@@ -53,6 +55,8 @@ namespace wpfData_Step_4.Model
             get { return password; }
             set { password = value; }
         }
+
+        public SnackList Snacks { get { return snacks; } set { snacks = value; } }
     }
 
     public class UserList : List<User>
@@ -66,4 +70,5 @@ namespace wpfData_Step_4.Model
         { } //המרה כלפי מטה מישות בסיס לרשימת קורסים
 
     }
+
 }

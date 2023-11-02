@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Markup;
+using wpfData.Model;
+using wpfData.ViewModel;
 using wpfData_Step_4.Model;
 
 namespace wpfData_Step_4.ViewModel
@@ -20,6 +22,7 @@ namespace wpfData_Step_4.ViewModel
 
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
+            SnackDB SDB = new SnackDB();
             User user = (User)entity;
             user.Id = (int)reader["PersonID"];
             user.FirstName = reader["FirstName"].ToString();
@@ -33,7 +36,7 @@ namespace wpfData_Step_4.ViewModel
             int cityID = (int)reader["CityID"];
             CityDB cityDB = new CityDB();
             user.City = cityDB.SelectById(cityID);
-
+            user.Snacks = SDB.SelectByUser(user.Id);
             return user;
         }
 
@@ -61,6 +64,15 @@ namespace wpfData_Step_4.ViewModel
             if (list.Count == 1)
                 return list[0];
             return null;
+        }
+
+        public UserList SelectBySnack(int id)
+        {
+            this.command.CommandText = "SELECT * FROM (tblUsersSnacks INNER JOIN tblSnacks " +
+                                        $"ON tblUsersSnacks.UserId = tblUsers.PersonId) WHERE SnackId = {id}";
+            UserList snacks = new UserList(base.ExecuteCommand());
+            return snacks;
+
         }
     }
 }
